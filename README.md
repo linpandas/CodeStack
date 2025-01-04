@@ -12,6 +12,19 @@
 
 2. 在浏览器打开LeetCode网页，登录自己的账号；键盘按F12，打开开发者模式；在console中输入`javascript:document.cookie`，得到Cookie；截取Cookie中csrftoken="xxx"中的xxx，LEETCODE_SESSION="yyy"中的yyy，注意不包含分号。
 
+从Cookie中获取csrftoken和LEETCODE_SESSION的Python代码：
+
+```
+s = "Please replace the string to your leetcode cookie."
+s = s.split(";")
+dic = dict()
+for kv in s:
+    k, v = kv.split("=")
+    dic[k.strip()] = v
+print("csrftoken:\n", dic["csrftoken"])
+print("\nLEETCODE_SESSION:\n", dic["LEETCODE_SESSION"])
+```
+
 3. 选中LeetCode插件，选择第二个“Sign In”图标，点击第二个“LeetCode Cookie登录方式，将step2中得到的csrftoken和LEETCODE_SESSION值填入，登录即可。
 
 ## 项目结构

@@ -1,0 +1,53 @@
+#
+# @lc app=leetcode.cn id=114 lang=python3
+# @lcpr version=30204
+#
+# [114] 二叉树展开为链表
+#
+
+
+# @lcpr-template-start
+
+# @lcpr-template-end
+# @lc code=start
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def flatten(self, root: Optional[TreeNode]) -> None:
+        """
+        Do not return anything, modify root in-place instead.
+        """
+        cur = root
+        while cur:
+            if cur.left:
+                temp = cur.left
+                while temp.right:
+                    temp = temp.right
+                temp.right = cur.right
+                cur.right = cur.left
+                cur.left = None
+            cur = cur.right
+        
+# @lc code=end
+
+
+
+#
+# @lcpr case=start
+# [1,2,5,3,4,null,6]\n
+# @lcpr case=end
+
+# @lcpr case=start
+# []\n
+# @lcpr case=end
+
+# @lcpr case=start
+# [0]\n
+# @lcpr case=end
+
+#
+
